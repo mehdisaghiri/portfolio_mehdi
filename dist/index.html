@@ -4,44 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio of Mohamed El Mehdi Saghiri — ServiceNow, Data Engineering and Full-Stack Development." />
-  <meta name="theme-color" content="#071018" />
+  <meta name="theme-color" content="#080610" />
   <title>Mohamed El Mehdi Saghiri — ServiceNow & Data Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23071018'/%3E%3Cpath d='M15 45V19h7l10 13 10-13h7v26h-8V31l-9 11-9-11v14z' fill='%234ee7d1'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23080610'/%3E%3Cpath d='M15 45V19h7l10 13 10-13h7v26h-8V31l-9 11-9-11v14z' fill='%23bd9bff'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./sections.css" />
+  <link rel="stylesheet" href="./design.css" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Go to top"><span>MS</span></a>
+    <a class="brand" href="#top" aria-label="Mohamed El Mehdi Saghiri, go to top"><span>ms.</span><b>Mehdi Saghiri</b></a>
     <nav aria-label="Primary navigation">
-      <a href="#work">Work</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#studio">Studio</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
     </nav>
-    <a class="availability" href="mailto:saghiri-moh@upf.ac.ma"><i></i> Available for opportunities</a>
+    <a class="nav-contact" href="#contact">Let’s talk <span>✦</span></a>
   </header>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-aura" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Fès, Morocco · Engineering profile</p>
-        <h1 id="hero-title">I turn <span>complex systems</span><br />into useful products.</h1>
-        <p class="intro">I’m Mohamed El Mehdi Saghiri — a computer engineering student working across ServiceNow, data engineering, business intelligence and full-stack development.</p>
+        <p class="hero-badge"><span>✦</span> ServiceNow · Data · Development</p>
+        <p class="hello">Hello, I’m Mohamed El Mehdi</p>
+        <h1 id="hero-title">Saghiri<span class="name-dot">.</span><br /><span class="gradient-text">I connect the dots.</span></h1>
+        <p class="intro">From intelligent platforms to decision-ready data.<br />I turn complex systems into useful digital experiences.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#projects">Explore my work</a>
-          <a class="button ghost" href="mailto:saghiri-moh@upf.ac.ma">Start a conversation</a>
+          <a class="button primary" href="#projects">Explore my work <span>✦</span></a>
+          <a class="button ghost" href="#studio">Enter my studio</a>
         </div>
+        <div class="hero-footnote"><span>Fès, Morocco</span><i></i><span>Computer engineering student</span></div>
       </div>
-      <div class="hero-orbit-label label-one"><b>01</b><span>ServiceNow<br />Platforms</span></div>
-      <div class="hero-orbit-label label-two"><b>02</b><span>Data<br />Intelligence</span></div>
-      <div class="hero-orbit-label label-three"><b>03</b><span>Full-stack<br />Products</span></div>
-      <div class="scroll-cue" aria-hidden="true"><span>Scroll to explore</span><i></i></div>
+      <div class="portrait-stage" data-tilt>
+        <div class="portrait-orbit orbit-one" aria-hidden="true"></div><div class="portrait-orbit orbit-two" aria-hidden="true"></div>
+        <figure class="portrait-card"><img src="./assets/mehdi-portrait.jpg" alt="Mohamed El Mehdi Saghiri standing outside the Centre d’Excellence sur les Batteries" width="720" height="1280" fetchpriority="high" /><figcaption><span>Mohamed El Mehdi Saghiri</span><small>Engineer in the making.</small></figcaption></figure>
+        <a class="floating-skill skill-sn" href="#skills"><span class="sn-icon">S</span><div><b>ServiceNow</b><small>Certified System Administrator</small></div></a>
+        <a class="floating-skill skill-data" href="#skills"><span class="data-icon">▥</span><div><b>Data & BI</b><small>SQL · Power BI · Python</small></div></a>
+        <a class="floating-skill skill-dev" href="#projects"><span class="dev-icon">&lt;/&gt;</span><div><b>Full stack</b><small>Ideas into products</small></div></a>
+        <span class="portrait-spark spark-one" aria-hidden="true">✦</span><span class="portrait-spark spark-two" aria-hidden="true">✧</span>
+      </div>
+      <a class="scroll-cue" href="#studio"><span>Discover my universe</span><i></i></a>
     </section>
 
     <section class="signal-strip" aria-label="Core disciplines"><span>ServiceNow</span><i></i><span>Data Engineering</span><i></i><span>Business Intelligence</span><i></i><span>Full-stack Development</span></section>
+
+    <section class="section studio" id="studio" aria-labelledby="studio-title">
+      <div class="studio-heading"><div><p class="eyebrow">A little corner of my universe</p><h2 id="studio-title">Where ideas come to life<span>.</span></h2></div><button id="lights-toggle" class="lights-toggle" type="button" aria-pressed="true"><span>☀</span> Lights on</button></div>
+      <div class="studio-viewport" id="studio-viewport">
+        <canvas id="studio-canvas" aria-hidden="true"></canvas>
+        <div class="studio-fallback"><span>✦</span><p>Explore my work, tools and journey below.</p></div>
+        <div class="studio-hotspots" aria-label="Workspace shortcuts"><a class="hotspot" id="hotspot-projects" href="#projects" aria-label="View my projects"><span>✦</span><b>My projects</b></a><a class="hotspot" id="hotspot-skills" href="#skills" aria-label="View my toolkit"><span>✦</span><b>My toolkit</b></a><a class="hotspot" id="hotspot-about" href="#about" aria-label="Read my story"><span>✦</span><b>My story</b></a></div>
+        <div class="studio-caption"><span class="studio-status">Interactive workspace</span><span>Move your pointer to look around · Choose a glowing marker</span></div>
+      </div>
+      <div class="studio-links"><a href="#projects">Explore projects <span>01</span></a><a href="#skills">Discover my toolkit <span>02</span></a><a href="#about">Meet the engineer <span>03</span></a></div>
+    </section>
 
     <section class="section about reveal" id="about" aria-labelledby="about-title">
       <div class="section-kicker"><span>01</span><p>Profile</p></div>
@@ -51,7 +70,7 @@
     <section class="section work" id="work" aria-labelledby="work-title">
       <div class="section-kicker reveal"><span>02</span><p>Experience</p></div><div class="section-heading reveal"><h2 id="work-title">A foundation built across the stack.</h2><p>From network infrastructure to intelligent platforms and decision-ready data.</p></div>
       <div class="timeline">
-        <article class="timeline-item reveal"><div class="time"><span>Jul 2026</span><i></i></div><div><p class="role-type">Final-year project · Alten Maroc, Fès</p><h3>ServiceNow & Data Engineer</h3><p>Processed, analyzed and visualized data with SQL and Power BI; contributed to ServiceNow configuration and development; collaborated with technical teams to improve internal processes.</p><div class="tags"><span>ServiceNow</span><span>SQL</span><span>Power BI</span><span>Data analysis</span></div></div></article>
+        <article class="timeline-item reveal"><div class="time"><span>Jul 2026</span><i></i></div><div><p class="role-type">Engineering internship (PFA) · Alten Maroc, Fès</p><h3>ServiceNow & Data Engineer</h3><p>Processed, analyzed and visualized data with SQL and Power BI; contributed to ServiceNow configuration and development; collaborated with technical teams to improve internal processes.</p><div class="tags"><span>ServiceNow</span><span>SQL</span><span>Power BI</span><span>Data analysis</span></div></div></article>
         <article class="timeline-item reveal"><div class="time"><span>Jul — Aug 2025</span><i></i></div><div><p class="role-type">Engineering project · Alten Maroc, Fès</p><h3>Full Stack Developer</h3><p>Managed IT support tickets and contributed to MissionPRO, an AI-assisted recruitment platform focused on faster, safer matching between candidates and recruiters.</p><div class="tags"><span>Full stack</span><span>AI matching</span><span>IT support</span><span>Product delivery</span></div></div></article>
         <article class="timeline-item reveal"><div class="time"><span>Mar — Jun 2024</span><i></i></div><div><p class="role-type">Graduation project · Baghdad Computers SARL, Fès</p><h3>Network Technician</h3><p>Installed operating systems, administered users and network services, diagnosed hardware and software issues, and deployed a TrueNAS Core server with ZFS, SMB/NFS/FTP shares, VPN and domain configuration.</p><div class="tags"><span>TrueNAS Core</span><span>ZFS</span><span>Windows Server</span><span>VPN</span></div></div></article>
       </div>
@@ -90,6 +109,7 @@
   </main>
   <footer><a class="brand" href="#top"><span>MS</span></a><p>Mohamed El Mehdi Saghiri · Fès, Morocco</p><p>© 2026</p></footer>
   <script type="module" src="./main.js"></script>
+  <script type="module" src="./workspace.js"></script>
   <script type="module" src="./sections.js"></script>
 </body>
 </html>

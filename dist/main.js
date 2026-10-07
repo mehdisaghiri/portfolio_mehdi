@@ -1,31 +1,36 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
-
 const canvas = document.querySelector('#hero-canvas');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, .1, 100);
-camera.position.set(0, 0, 7);
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.8));
-renderer.setSize(innerWidth, innerHeight);
+const hero = document.querySelector('.hero');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const group = new THREE.Group();
-group.position.x = innerWidth > 900 ? 2.45 : .9;
-scene.add(group);
-const geometry = new THREE.IcosahedronGeometry(1.72, 2);
-const material = new THREE.MeshBasicMaterial({ color: 0x4ee7d1, wireframe: true, transparent: true, opacity: .28 });
-const core = new THREE.Mesh(geometry, material);
-group.add(core);
-const pointsGeo = new THREE.BufferGeometry();
-const positions=[];
-for(let i=0;i<900;i++){const r=2.3+Math.random()*2.7;const a=Math.random()*Math.PI*2;const z=(Math.random()-.5)*5;positions.push(Math.cos(a)*r,Math.sin(a)*r,z)}
-pointsGeo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
-const points=new THREE.Points(pointsGeo,new THREE.PointsMaterial({color:0x5b8cff,size:.018,transparent:true,opacity:.48}));
-group.add(points);
-const ringMat=new THREE.MeshBasicMaterial({color:0x5b8cff,wireframe:true,transparent:true,opacity:.17});
-[2.1,2.55,3.05].forEach((r,i)=>{const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.005,3,160),ringMat);ring.rotation.set(i*.55,.7+i*.3,.2);group.add(ring)});
-let mouseX=0,mouseY=0;
-addEventListener('pointermove',e=>{mouseX=(e.clientX/innerWidth-.5)*.5;mouseY=(e.clientY/innerHeight-.5)*.5});
-function animate(t){group.rotation.y+=(mouseX-group.rotation.y)*.015;group.rotation.x+=(-mouseY-group.rotation.x)*.015;if(!reduceMotion){core.rotation.y=t*.00013;core.rotation.z=t*.00008;points.rotation.z=t*.000018}renderer.render(scene,camera);requestAnimationFrame(animate)}
-requestAnimationFrame(animate);
-addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);group.position.x=innerWidth>900?2.45:.9});
+// Keep the portrait and all content usable if WebGL or the library is unavailable.
+import('https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js').then(THREE => {
+  const renderer = new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45,1,.1,100);
+  camera.position.z=10;
+  const positions=[];
+  let seed=73;
+  const random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+  for(let i=0;i<600;i++)positions.push((random()-.5)*28,(random()-.5)*16,-2-random()*12);
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
+  const stars=new THREE.Points(geo,new THREE.PointsMaterial({color:0xcfb9fc,size:.027,transparent:true,opacity:.65}));
+  scene.add(stars);
+  const eclipse=new THREE.Group();
+  const color=0xac5cff;
+  [1.22,1.3,1.43].forEach((r,i)=>{
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.02-i*.005,10,160),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.8-i*.22}));
+    eclipse.add(ring);
+  });
+  const glow=new THREE.Mesh(new THREE.TorusGeometry(1.27,.11,16,160),new THREE.MeshBasicMaterial({color:0x8735e0,transparent:true,opacity:.12,blending:THREE.AdditiveBlending,depthWrite:false}));
+  eclipse.add(glow);scene.add(eclipse);
+  let pointerX=0,pointerY=0,visible=true,last=0;
+  const resize=()=>{const w=hero.clientWidth,h=hero.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();eclipse.position.set(0,4.8,-1);renderer.render(scene,camera)};
+  new ResizeObserver(resize).observe(hero);resize();
+  hero.addEventListener('pointermove',e=>{if(reduceMotion)return;const r=hero.getBoundingClientRect();pointerX=(e.clientX-r.left)/r.width-.5;pointerY=(e.clientY-r.top)/r.height-.5});
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting},{threshold:0}).observe(hero);
+  function frame(t){requestAnimationFrame(frame);if(!visible||document.hidden||t-last<33)return;last=t;if(!reduceMotion){stars.rotation.y+=(pointerX*.025-stars.rotation.y)*.04;stars.rotation.x+=(pointerY*.02-stars.rotation.x)*.04;eclipse.rotation.z=t*.00003;glow.material.opacity=.12+Math.sin(t*.001)*.035}renderer.render(scene,camera)}
+  if(!reduceMotion)requestAnimationFrame(frame);
+  document.documentElement.dataset.hero3d='ready';
+}).catch(()=>{document.documentElement.dataset.hero3d='fallback'});
