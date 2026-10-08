@@ -1,3 +1,5 @@
+import {openStudioPanel} from './studio-dialog.js';
+
 const viewport=document.querySelector('#studio-viewport');
 const canvas=document.querySelector('#studio-canvas');
 const toggle=document.querySelector('#lights-toggle');
@@ -138,7 +140,7 @@ import('https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js').then(
   new ResizeObserver(resize).observe(viewport);resize();
   viewport.addEventListener('pointermove',e=>{if(reduced)return;const r=viewport.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5});
   viewport.addEventListener('pointerleave',()=>{mx=0;my=0});
-  canvas.addEventListener('click',e=>{const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false)[0];if(hit?.object.userData.href){location.hash=hit.object.userData.href.slice(1)}});
+  canvas.addEventListener('click',e=>{const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false)[0];if(hit?.object.userData.href){openStudioPanel(hit.object.userData.href.slice(1))}});
   toggle.addEventListener('click',()=>{lightsOn=!lightsOn;toggle.setAttribute('aria-pressed',String(lightsOn));toggle.innerHTML=lightsOn?'<span>☀</span> Lights on':'<span>☾</span> Night mode';ambient.intensity=lightsOn?2.05:.6;key.intensity=lightsOn?3.1:.6;lampLight.intensity=lightsOn?9:0;lampGlow.emissiveIntensity=lightsOn?2.2:.12;rim.intensity=lightsOn?18:23;fill.intensity=lightsOn?8:4;renderer.toneMappingExposure=lightsOn?1.3:1.1;render()});
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)render()},{rootMargin:'80px',threshold:0}).observe(viewport);
   function frame(t){requestAnimationFrame(frame);if(!visible||document.hidden||t-last<33)return;last=t;if(!reduced){world.rotation.y+=(mx*.1-world.rotation.y)*.04;world.rotation.x+=(-my*.025-world.rotation.x)*.04;bulb.scale.setScalar(1+Math.sin(t*.0015)*.025)}render()}
