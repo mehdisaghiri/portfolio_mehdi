@@ -12,6 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23080610'/%3E%3Cpath d='M15 45V19h7l10 13 10-13h7v26h-8V31l-9 11-9-11v14z' fill='%23bd9bff'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./sections.css" />
   <link rel="stylesheet" href="./design.css" />
+  <link rel="stylesheet" href="./blueprint.css" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -27,16 +28,24 @@
     <section class="hero" aria-labelledby="hero-title">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-aura" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="hero-badge"><span>✦</span> ServiceNow · Data · Development</p>
-        <p class="hello">Hello, I’m Mohamed El Mehdi</p>
-        <h1 id="hero-title">Saghiri<span class="name-dot">.</span><br /><span class="gradient-text">I connect the dots.</span></h1>
-        <p class="intro">From intelligent platforms to decision-ready data.<br />I turn complex systems into useful digital experiences.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">Explore my work <span>✦</span></a>
-          <a class="button ghost" href="#studio">Enter my studio</a>
+      <div class="hero-copy hero-blueprint">
+        <div class="blueprint-register"><span><b>MS /</b> Engineering blueprint</span><span>Fès · MA</span></div>
+        <div class="blueprint-identity"><h1 id="hero-title"><span>Mohamed El Mehdi</span>Saghiri<span class="blueprint-name-dot">.</span></h1><p>Computer engineering student<br /><span>Platform logic × Data intelligence</span></p></div>
+        <div class="blueprint-map" aria-label="My approach to ServiceNow and data engineering">
+          <div class="blueprint-lane blueprint-platform">
+            <div class="blueprint-lane-heading"><span class="blueprint-track-id">01 / Platform</span><h2>ServiceNow</h2><span class="blueprint-credential">CSA certified</span></div>
+            <ol class="blueprint-flow" aria-label="ServiceNow workflow"><li><span>Understand</span><strong>Requests</strong></li><li><span>Automate</span><strong>Flows</strong></li><li><span>Deliver</span><strong>Resolution</strong></li></ol>
+            <p class="blueprint-tools">CMDB <span>·</span> CSDM <span>·</span> App Engine</p>
+          </div>
+          <div class="blueprint-lane blueprint-data">
+            <div class="blueprint-lane-heading"><span class="blueprint-track-id">02 / Intelligence</span><h2>Data engineering</h2><span class="blueprint-layer-label">Bronze → Silver → Gold</span></div>
+            <ol class="blueprint-flow" aria-label="Data pipeline"><li><span>Ingest</span><strong>Raw data</strong></li><li><span>Structure</span><strong>SQL / ETL</strong></li><li><span>Visualize</span><strong>Insights</strong></li></ol>
+            <p class="blueprint-tools">SQL <span>·</span> Python <span>·</span> Power BI</p>
+          </div>
+          <div class="blueprint-outcome"><svg viewBox="0 0 44 38" aria-hidden="true"><path d="M5 2v10q0 7 7 7h10M39 2v10q0 7-7 7H22v13"/><circle cx="22" cy="33" r="3"/></svg><p>Different systems. <em>One useful outcome.</em></p></div>
         </div>
-        <div class="hero-footnote"><span>Fès, Morocco</span><i></i><span>Computer engineering student</span></div>
+        <p class="blueprint-note">I bring platform workflows and decision-ready data together — with full-stack development to connect the pieces.</p>
+        <div class="blueprint-actions"><a href="#projects"><span>Explore my work</span><i aria-hidden="true">↗</i></a><a href="#studio"><span>Step inside my studio</span><i aria-hidden="true">→</i></a></div>
       </div>
       <div class="portrait-stage" data-tilt>
         <div class="portrait-orbit orbit-one" aria-hidden="true"></div><div class="portrait-orbit orbit-two" aria-hidden="true"></div>
